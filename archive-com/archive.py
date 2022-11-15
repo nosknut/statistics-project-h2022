@@ -11,7 +11,7 @@ os.makedirs(output_dir, exist_ok=True)
 
 file_path = output_dir
 file_path += "/"
-file_path += "source"  # input("Name the output file: ")
+file_path += "out"  # input("Name the output file: ")
 file_path += "_%s.csv"
 
 # Autoincrement filename

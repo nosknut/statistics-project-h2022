@@ -27,6 +27,10 @@ num_read = 0
 def print_progress():
     while True:
         progress = round((num_read / num_readings) * 100, 3)
+        if progress >= 100:
+            sys.stdout.write("\rArchiving complete!")
+            sys.stdout.flush()
+            break
         sys.stdout.write("\rProgress: " + str(progress) + "%")
         sys.stdout.flush()
         time.sleep(1)

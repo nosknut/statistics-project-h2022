@@ -11,7 +11,7 @@ os.makedirs(output_dir, exist_ok=True)
 
 file_path = output_dir
 file_path += "/"
-file_path += "out"  # input("Name the output file: ")
+file_path += input("Name the output file: ")
 file_path += "_%s.csv"
 
 # Autoincrement filename
@@ -42,7 +42,7 @@ progress_thread.start()
 # Fill csv file
 with open(file_path, 'a', newline='') as csvfile:
     s = serial.Serial('COM3', 115200)
-    csvfile.write("time, value\n")
+    csvfile.write("time, value, value2\n")
     while num_read <= num_readings:
         if s.in_waiting > 0:
             msg = s.read(s.in_waiting).decode("utf-8")

@@ -10,12 +10,11 @@ def load_file(file_path):
     data = numpy.genfromtxt(file_path, delimiter=', ', skip_header=1)
 
 def scatter_timelapse():
-    for time, value in data:
+    for time, value, value2 in data:
         plt.plot(time, value, 'ro')
         plt.pause(0.000001)
     
 def line_plot(column):
-    # plt.ylim([1860, 1920])
     plt.plot(data[:,0], data[:,column])
 
 def generate_graphs():
@@ -55,6 +54,16 @@ def generate_statistics():
         writer.writeheader()
         writer.writerows(statistics)
         
+def find_bad_regions():
+    global data
+    load_file("output/"+"transistor_reverse_5.csv")
+    data = data[:200000]
+    plt.figure(0)
+    line_plot(1)
+    plt.figure(1)
+    line_plot(2)
+    plt.show()
+
 generate_graphs()
 generate_statistics()
 

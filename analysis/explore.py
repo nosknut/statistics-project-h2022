@@ -14,16 +14,19 @@ def scatter_timelapse():
         plt.plot(time, value, 'ro')
         plt.pause(0.000001)
     
-def line_plot():
-    plt.ylim([1920, 1860])
-    plt.plot(data[:,0], data[:,1])
+def line_plot(column):
+    # plt.ylim([1860, 1920])
+    plt.plot(data[:,0], data[:,column])
 
 def generate_graphs():
     os.makedirs("plots", exist_ok=True)
     for file in os.listdir('output'):
         load_file("output/"+file)
-        line_plot()
-        plt.savefig('plots/' + os.path.splitext(file)[0] + '.png')
+        line_plot(1)
+        plt.savefig('plots/' + os.path.splitext(file)[0] + '_value.png')
+        plt.clf()
+        line_plot(2)
+        plt.savefig('plots/' + os.path.splitext(file)[0] + '_value2.png')
         plt.clf()
 
 def generate_statistics():
@@ -32,11 +35,20 @@ def generate_statistics():
         load_file("output/" + file)
         values = data[:,1]
         statistics.append({
-            "file": file.strip(),
+            "file": file.strip() + "_value",
             "std": values.std(),
             "mean": values.mean(),
+            "median": numpy.median(values),
         })
 
+        values2 = data[:,2]
+        statistics.append({
+            "file": file.strip() + "_value2",
+            "std": values2.std(),
+            "mean": values2.mean(),
+            "median": numpy.median(values2),
+        })
+        
     os.makedirs("plots", exist_ok=True)
     with open("plots/statistics.csv", 'w', newline='') as csvfile:
         writer = csv.DictWriter(csvfile, fieldnames=statistics[0].keys())

@@ -21,7 +21,7 @@ while os.path.exists(file_path % i):
 
 file_path = file_path % i
 
-num_readings = 100e3
+num_readings = 300e3
 num_read = 0
 
 def print_progress():

@@ -1,0 +1,15 @@
+transistor_0.csv
+base_0.csv
+base_1.csv
+transistor_1.csv
+transistor_reverse_0.csv
+transistor_reverse_1.csv
+transistor_reverse_2.csv
+transistor_reverse_3.csv
+transistor_reverse_4.csv
+transistor_2.csv
+transistor_3.csv
+transistor_4.csv
+transistor_5.csv 300k readings
+transistor_reverse_5.csv 300k readings
+base_2.csv 300k readings
